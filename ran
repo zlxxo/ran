@@ -1,0 +1,818 @@
+clc
+mode(1)
+
+pause 
+//Zadatak 1
+//a
+3*456/23+31.54+2^6
+//b
+sqrt(2)*log(10)
+//c
+cos(%pi/3)+sin(%pi/2)*exp(3)
+//d
+atan(5)+log10(20)
+
+pause
+//Zadatak 2
+//a
+zeros(5,9)
+//b
+ones(7,2)
+//c
+eye(5,5)
+//d
+A=[1, -4*%i, sqrt(2); log(-1), sin(%pi/2), cos(%pi/3);asin(0.5), acos(0.8),exp(0.8)]
+
+pause
+//Zadatak 3
+//a
+A.'
+//b
+A'
+//c
+A-A.'
+//d
+A*A.'
+A.'*A
+//e
+det(A)
+sum(A)
+sum(A,1)
+sum(A,2)
+
+pause
+//Zadatak 4
+//a
+A(2,:)
+//b
+A(:,3)
+//c
+A(2,3)
+//d
+B=A(1:2,2:3)
+
+pause
+//Zadatak 5
+a=[ones(1,3);3*ones(1,3);2*ones(1,3)]
+b=[9:-1:7;6:-1:4;3:-1:1]
+//a
+c=cos(b)
+//b
+c=sin(b).*cos(a)
+//c
+c=b^(1/5)
+//d
+c=a.^(1/3)
+
+pause
+//Zadatak 6
+//a
+a=1:50
+//b
+b=49:-1:0
+//c
+c=0:5:45
+
+pause
+//Zadatak 7
+//a
+x=-%pi:%pi/50:%pi;
+y=cos(x);
+plot(x,y)
+
+pause
+clf
+//b
+x=linspace(1,7,100);
+y=sin(1 ./ x);
+plot(x,y,'k')
+
+pause
+//c
+y= sin(2*x);
+plot(x,y,'bo')
+
+pause
+clf
+//Zadatak 8
+x=linspace(-8,8,100);
+y=linspace(-8,8,100);
+[X,Y]=meshgrid(x,y);
+Z=X.^2+Y.^2;
+surf(X,Y,Z);
+
+pause
+//Zadatak 9
+//a
+function [zbir,razlika] = Rezultat(x,y)
+zbir=x+y;
+razlika=x-y;
+endfunction
+//Primjer
+[z,r]=Rezultat(5,3)
+
+pause
+//b
+function [s] = Suma (A)
+s=0;
+for i=1:size(A,'r')
+    for j=1:size(A,'c')
+        s=s+A(i,j);
+    end;
+end;
+endfunction
+//Primjer
+Suma(A)
+
+pause
+//Zadatak 10
+//a
+function [] = z10a(s)
+    x=linspace(-2,2,100);
+    y=evstr(s);
+    subplot(1,2,1);
+    plot(x,y,'b');
+    subplot(1,2,2);
+    plot(x,y,'k+');
+endfunction
+z10a('x^2')
+pause
+clf
+//b
+function [] = z10b(s)
+   X=linspace(-4,4,100);
+   Y=linspace(-4,4,100);
+   [x,y]=meshgrid(X,Y);
+   z=evstr(s)
+   surf(x,y,z);
+endfunction
+z10b('x.^2+y.^2')
+
+
+
+
+
+
+
+
+clc
+mode(1)
+
+pause
+//Zadatak 1
+A=[2,1,3;2,6,8;6,8,18]
+B=[1;3;5]
+
+pause
+//Varijanta 1
+X=A\B
+
+pause
+//Varijanta 2
+X=(A.'*A)\(A.'*B)
+
+pause
+//Varijanta 3
+X=pinv(A)*B
+
+pause
+//Zadatak 2
+A=[2,1;-3,1;-1,1]
+B=[-1;-1;2]
+X=A\B
+pause
+//Greska 
+err=abs(A*X-B)
+
+pause
+//Zadatak 3
+//a)
+A=[2,4,6,8;3,5,7,9]
+B=[10*ones(2,4)]
+
+pause
+A/B
+
+pause
+//b)
+A=[1 2 3; 4 5 6; 7 8 9]
+B=[7 5 6; 2 0 8; 5 7 1]
+
+pause
+A/B
+
+pause
+//Zadatak 4
+C=testmatrix('magi',3)
+D=inv(testmatrix('hilb',3))
+
+pause
+//Determinanta
+det(C)
+det(D)
+
+pause
+//Rang
+rank(C)
+rank(D)
+
+pause
+//Faktor uslovljenosti
+cond(C)
+cond(D)
+
+pause
+//Zadatak 5
+A=[1 -2 -2 -3; 3 -9 0 -9; -1 2 4 7; -3 -6 26 2]
+B=[ 2 -1 0; -1 2 -1; 0 -1 2]
+
+pause
+//LU faktorizacija
+[L, U]=lu(A)
+
+pause
+//Faktorizacija Choleskog
+R=chol(B)
+
+pause
+//provjera
+A
+L*U
+
+//provjera
+B
+R*R'
+
+pause
+//Zadatak 6
+M=[3 4 18 34 0 2 31
+1 -3 -7 -6 2 4 26
+2 1 7 16 3 -1 27
+5 11 43 74 2 0 56
+3 -3 -3 6 -1 14 55
+-2 0 -4 -12 1 5 6
+1 -6 -16 -18 4 4 33]
+
+pause
+//RREF
+rref(M)
+
+pause
+//Zadatak 7
+P=[1,1,1;1,2,3;1,3,6]
+
+pause
+//QR faktorizacija
+[Q,R]=qr(P)
+
+pause
+//Provjera
+P
+Q*R
+
+pause
+//Zadatak 8
+A=[1,0,1;-1,-2,0;0,1,-1]
+
+pause
+//a) Predefinisana funkcija
+X=spec(A)
+
+pause
+//b) QR algoritam
+AA=A;
+[Q,R]= qr(AA); AA=R*Q
+pause
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+[Q,R]= qr(AA); AA=R*Q
+
+pause
+//Provjera sopstvenih vrijednosti
+X
+AA
+
+pause
+//c)SVD
+[U,S,V]=svd(A)
+
+pause
+//Singularne vrijednosti 
+S
+
+pause
+//Provjera SVD dekompozicije
+A
+U*S*V.'
+
+
+
+
+
+
+
+
+
+mode(1)
+clc
+clf
+pause
+//Zadatak 1 
+// a)Sin(x)
+x1=linspace(0,2*%pi,100);
+y1=sin(x1);
+subplot(1,2,1)
+plot(x1,y1);
+
+pause
+//b) Rungeova funkcija
+x2=linspace(-1,1,100);
+y2=1 ./ (1+25*x2.^2);
+subplot(1,2,2)
+plot(x2,y2);
+
+pause
+//Zadatak 2
+clf
+//Definisanje tačaka za interpolaciju
+xdata1=linspace(0,2*%pi,10);
+ydata1=sin(xdata1);
+//Potrebno izvršiti zaokruživanje ydata1(10)
+ydata1(10)=round(ydata1(10));
+xdata2=linspace(-1,1,10);
+ydata2=1 ./ (1+25*xdata2.^2);
+xx1=linspace(0,2*%pi,50);
+xx2=linspace(-1,1,50);
+
+
+pause
+//a) Linearna interpolacija
+//Sin(x)
+yy1=interp1(xdata1,ydata1,xx1,"linear");
+subplot(2,2,1)
+plot(x1,y1,'r');
+plot(xx1,yy1,'b');
+plot(xdata1,ydata1,'g*');
+legend(["Sin(x)";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//Rungeova funkcija
+yy2=interp1(xdata2,ydata2,xx2,"linear");
+subplot(2,2,2)
+plot(x2,y2,'r');
+plot(xx2,yy2,'b');
+plot(xdata2,ydata2,'g*');
+legend(["Runge funkcija";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//b) Spline interpolacija
+//Sin(x)
+yy1=interp1(xdata1,ydata1,xx1,"spline");
+subplot(2,2,3)
+plot(x1,y1,'r');
+plot(xx1,yy1,'b');
+plot(xdata1,ydata1,'g*');
+legend(["Sin(x)";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//Rungeova funkcija
+yy2=interp1(xdata2,ydata2,xx2,"spline");
+subplot(2,2,4)
+plot(x2,y2,'r');
+plot(xx2,yy2,'b');
+plot(xdata2,ydata2,'g*');
+legend(["Runge funkcija";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//Zadatak 3
+//Sin(x)
+clf
+//not-a-knot
+d=splin(xdata1,ydata1,"not_a_knot");
+[yy1]=interp(xx1,xdata1,ydata1,d);
+subplot(2,2,1)
+plot(x1,y1,'r');
+plot(xx1,yy1,'b');
+plot(xdata1,ydata1,'g*');
+legend(["Sin(x)";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//clamped
+d=splin(xdata1,ydata1,"clamped",[1,1]);
+[yy1]=interp(xx1,xdata1,ydata1,d);
+subplot(2,2,2)
+plot(x1,y1,'r');
+plot(xx1,yy1,'b');
+plot(xdata1,ydata1,'g*');
+legend(["Sin(x)";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//natural
+d=splin(xdata1,ydata1,"natural");
+[yy1]=interp(xx1,xdata1,ydata1,d);
+subplot(2,2,3)
+plot(x1,y1,'r');
+plot(xx1,yy1,'b');
+plot(xdata1,ydata1,'g*');
+legend(["Sin(x)";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//periodic
+d=splin(xdata1,ydata1,"periodic");
+[yy1]=interp(xx1,xdata1,ydata1,d);
+subplot(2,2,4)
+plot(x1,y1,'r');
+plot(xx1,yy1,'b');
+plot(xdata1,ydata1,'g*');
+legend(["Sin(x)";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//Runge
+clf
+//not-a-knot
+d=splin(xdata2,ydata2,"not_a_knot");
+[yy2]=interp(xx2,xdata2,ydata2,d);
+subplot(2,2,1)
+plot(x2,y2,'r');
+plot(xx2,yy2,'b');
+plot(xdata2,ydata2,'g*');
+legend(["RungeFun";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//clamped
+d=splin(xdata2,ydata2,"clamped",[25/338,-25/338]);
+[yy2]=interp(xx2,xdata2,ydata2,d);
+subplot(2,2,2)
+plot(x2,y2,'r');
+plot(xx2,yy2,'b');
+plot(xdata2,ydata2,'g*');
+legend(["RungeFun";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//natural
+d=splin(xdata2,ydata2,"natural");
+[yy2]=interp(xx2,xdata2,ydata2,d);
+subplot(2,2,3)
+plot(x2,y2,'r');
+plot(xx2,yy2,'b');
+plot(xdata2,ydata2,'g*');
+legend(["RungeFun";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//periodic
+d=splin(xdata2,ydata2,"periodic");
+[yy2]=interp(xx2,xdata2,ydata2,d);
+subplot(2,2,4)
+plot(x2,y2,'r');
+plot(xx2,yy2,'b');
+plot(xdata2,ydata2,'g*');
+legend(["RungeFun";"Vrijednosti interpolacije";"Podaci za interpolaciju"]);
+
+pause
+//Zadatak 4
+//Sin(x)
+clf
+//not-a-knot
+xdata1=xdata1';
+ydata1=ydata1';
+xx1=linspace(-%pi,3*%pi,100)';
+d=splin(xdata1,ydata1);
+yy1a=interp(xx1,xdata1,ydata1,d,"C0");
+yy1b=interp(xx1,xdata1,ydata1,d,"by_nan");
+yy1c=interp(xx1,xdata1,ydata1,d,"by_zero");
+yy1d=interp(xx1,xdata1,ydata1,d,"natural");
+yy1e=interp(xx1,xdata1,ydata1,d,"linear");
+yy1f=interp(xx1,xdata1,ydata1,d,"periodic");
+subplot(2,2,1)
+title("Sin(x)");
+plot2d(xx1,[yy1a yy1b yy1c]);
+legend(["C0";"by_nan";"by_zero"]);
+subplot(2,2,2)
+plot2d(xx1,[yy1d yy1e yy1f]);
+title("Sin(x)");
+legend(["natural";"linear";"periodic"]);
+
+pause
+//Runge(x)
+//not-a-knot
+xdata2=xdata2';
+ydata2=ydata2';
+xx2=linspace(-2,2,100)';
+d=splin(xdata2,ydata2);
+yy2a=interp(xx2,xdata2,ydata2,d,"C0");
+yy2b=interp(xx2,xdata2,ydata2,d,"by_nan");
+yy2c=interp(xx2,xdata2,ydata2,d,"by_zero");
+yy2d=interp(xx2,xdata2,ydata2,d,"natural");
+yy2e=interp(xx2,xdata2,ydata2,d,"linear");
+yy2f=interp(xx2,xdata2,ydata2,d,"periodic");
+subplot(2,2,3)
+title("RungeFun");
+plot2d(xx2,[yy2a yy2b yy2c]);
+legend(["C0";"by_nan";"by_zero"]);
+subplot(2,2,4)
+plot2d(xx2,[yy2d yy2e yy2f]);
+title("RungeFun");
+legend(["natural";"linear";"periodic"]);
+
+
+
+
+
+
+
+
+
+clc
+mode(1)
+pause
+//Zadatak 1 
+//Definisanje P1 i P2
+P1=poly(1:2:5,"x","c")
+P2=poly(1:3:10,"x","r")
+pause
+//Nule P1 i P2
+kp1=roots(P1)
+kp2=roots(P2)
+pause
+//Koeficijenti P1 i P2
+kop1=coeff(P1)
+kop2=coeff(P2)
+
+pause
+//Zadatak 2
+pause
+//a)Sabiranje
+Z=P1+P2
+pause
+//b)Oduzimanje
+R=P1-P2
+pause
+//c)Množenje
+P=P1*P2
+pause
+//d)Dijeljenje
+D=P1/P2
+
+pause
+//Zadatak 3
+P3=poly(1:3,"y","c")
+pause
+//a) Broj 5
+horner(P3,5)
+pause
+//b) Vektor[1:5]
+horner(P3,1:5)
+pause
+//c) Kompleksan broj 5+2i
+horner(P3,5+2*%i)
+pause
+//d) Izraz 1/x
+x=poly(0,'x');
+horner(P3,1/x)
+
+pause
+//Zadatak 4
+//Obična chepol
+var='z';
+F=chepol(4,var)
+pause
+//Rekurzivna
+T0=1;
+T1=poly(0,var);
+T2=2*poly(0,var)*T1-T0
+T3=2*poly(0,var)*T2-T1
+T4=2*poly(0,var)*T3-T2
+
+
+
+
+
+
+
+
+
+clc
+mode(1)
+pause
+//Zadatak 1 
+//Definisanje seta podataka
+xdata=linspace(0,2*%pi,10);
+ydata=sin(xdata);
+x=linspace(0,2*%pi,100);
+pause
+//Interpolacija funkcije not a knot
+[yp, yp1, yp2]=interp(x,xdata,ydata,splin(xdata,ydata));
+subplot(1,2,1)
+plot(x,yp1,'k');
+plot(x,yp2,'r');
+pause
+//Interpolacija funkcije natural
+[yp, yp1, yp2]=interp(x,xdata,ydata,splin(xdata,ydata,'natural'));
+subplot(1,2,2)
+plot(x,yp1,'k');
+plot(x,yp2,'r');
+
+pause
+//Zadatak 2
+//Definisanje polinoma
+P=poly([5,1,2,1],"x","c")
+y=poly(0,'y');
+Q=1/y^2+1
+pause
+//Prvi izvod
+pd1=derivat(P)
+pd2=derivat(Q)
+pause
+//Drugi izvod
+dd1=derivat(pd1)
+dd2=derivat(pd2)
+
+pause 
+//Zadatak 3
+//Definisanje funkcije
+function y=F(x)
+  y = sum(x.^3);
+endfunction
+x = [1; 2; 3];
+pause
+//Računanje  Jakobijana i Hesijana
+[J, H] = numderivative(F, x, [], [], "blockmat")
+
+pause
+//Zadatak 4
+//Definisanje funkcije i vrijednosti parametara
+function f=fun(x, a, b, c)
+  f=(x+a)^c+b;
+endfunction
+a=3; b=4; c=2;x=1;
+pause
+//Računanje gradijenta
+g=numderivative(list(fun,a,b,c),x)
+//Tačna vrijednost
+exact=c*(x+a)^(c-1)
+
+pause
+//Zadatak 5
+//Definisanje parametara
+x0=0;x1=0:0.5:%pi;
+pause
+//Računanje integrala
+X=integrate('sin(x)','x',x0,x1)
+
+pause
+//Zadatak 6
+//Definisanje funkcije
+function y=myfun(x)
+y=x*sin(30*x)/sqrt(1-((x/(2*%pi))^2));
+endfunction
+exact=-2.5432596188;
+pause
+//Računanje integrala i greške
+I=intg(0,2*%pi,myfun)
+abs(exact-I)
+
+pause
+//Zadatak 7
+//Definisanje funkcije
+function y=g(z)
+  y = z^(3 + %pi * %i);
+endfunction
+pause
+//Računanje vrijednosti integrala
+intc(1+%i, 4-%i,g)
+
+pause
+//Zadatak 8
+//Definisanje t
+t=0:0.1:%pi;
+pause
+//Računanje integrala
+inttrap(t,cos(t))
+
+pause
+//Zadatak 9
+//Računanje integrala
+intsplin(t,cos(t))
+
+
+
+
+
+
+clc
+mode(1)
+pause
+//Zadatak 1
+//a)
+//Plotanje i definisanje funkcija
+deff('res=funct_1(x)','res=cos(x)-x');
+x0 = 0;
+x = linspace(-2,2,51);
+y=cos(x);
+plot(x,y,'r-');
+plot(x,x,'b-');
+pause
+//Poziv fsolve
+xsol =fsolve(x0,funct_1)
+
+pause
+//b)
+//Plotanje i definisanje funkcija
+deff('res=funct_2(x)',['res(1)=x(2)-(x(1).^2+1)';'res(2)=x(1)-(2*x(2)-x(2).^2)/3']);
+clf;
+x = linspace(-3,3,101);
+y = x.^2+1;
+plot(x,y,'r-');
+y = linspace(-3,5,51);
+x=(2*y-y.^2)/3;
+plot(x,y,'b-');
+x0 = [1;0];
+x1 = [-3;8];
+pause
+//Poziv fsolve
+xsol1 =fsolve(x0,funct_2)
+xsol2 =fsolve(x1,funct_2)
+
+pause
+//Zadatak 2
+//Plotanje funkcije
+x = linspace(-1.5,1.5); y = linspace(-1,3);
+[X,Y] = meshgrid(x,y);
+Z= (1-X).^2 + 100*(Y-X.^2).^2;
+clf
+surf(X,Y,Z,'facecol','red','edgecol','blu');
+pause
+//Definisanje funkcije
+function y=banana(x)
+  y = 100*(x(2)-x(1)^2)^2 + (1-x(1))^2;
+endfunction
+pause
+//Potraga minimuma
+[x, fval, exitflag, output] = fminsearch ( banana , [-1.2 1] )
+
+pause 
+//Zadatak 3
+//Definisanje funkcije i početnih uvjeta
+function [dpdt] = opruga(t, p)
+m = 10;
+k = 100;
+dpdt = zeros(2, 1);
+dpdt(1) = p(2);
+dpdt(2) = -k*p(1)/m
+endfunction
+clf
+t0=0;
+y0=[0;1];
+pause
+//Obično rješavanje
+t=linspace(0,10,100);
+y = ode(y0,t0,t,opruga);
+subplot(1,2,1)
+plot(t',y(1,:)');
+title('Pozicija vs Vrijeme');
+subplot(1,2,2)
+title('Brzina vs Vrijeme');
+plot(t',y(2,:)');
+
+
+pause
+//Zadatak 4
+//Definisanje sekvenci
+x = [ 1 3 5 4 2 ];
+a = [ 1 5 4 2];
+b = [ 4 1 3 ];
+a1 = [ a 0 0 0 0 ];
+b1 = [ b 0 0 0 0 0 ];
+pause
+//a) Računanje FFT i IFFT
+y = fft(x)
+ifft(y)
+fft(y, 1) 
+pause
+//b) Diskretna konvolucija direktno i indirektno
+ap = poly(a, 'x', 'c')
+bp = poly(b, 'x', 'c');
+ap * bp
+pause
+a1f = fft(a1)
+b1f = fft(b1)
+c1f = a1f .* b1f
+ifft(c1f)
+pause
+//c) Diskretna konvolucija-predefinisane funkcije
+conv(a, b)
+convol(a, b)
